@@ -1,6 +1,7 @@
 //require in the relevant model
-//require in expressrouter
 
+//require in expressrouter
+const router = require("express").Router()
 //post request to create workouts
 
 //put request to update a workout
@@ -12,3 +13,4 @@
 //dete request to delete a workout
 
 //exports the router
+module.exports = router;
