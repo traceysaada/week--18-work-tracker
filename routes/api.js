@@ -4,11 +4,14 @@ const Workout = require("../models/workout.js");
 const router = require("express").Router()
 //post request to create workouts
 router.post("/api/workouts", (req, res) => {
+    console.log("Creating workout")
  Workout.create({})
  .then(dbWorkout => {
+     console.log(dbWorkout)
      res.json(dbWorkout);
  })
  .catch(err => {
+     console.log(err)
      res.status(400).json(err);
  })
 });

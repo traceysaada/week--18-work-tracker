@@ -12,7 +12,9 @@ app.use(express.json());
 // set up middleware for express.static to use the public folder
 app.use(express.static("public"));
 // set up the connection using mongoose.connect
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:21017/workout", {
+var mongoEnv = process.env.MONGODB_URI || "mongodb://localhost:21017/workout";
+console.log(mongoEnv)
+mongoose.connect(mongoEnv, {
 useNewUrlParser: true,
 useFindAndModify: false,
 useUnifiedTopology: true,
