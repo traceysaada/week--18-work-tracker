@@ -24,8 +24,16 @@ router.put("/api/workouts/:id", ({body, params}, res) =>{
  });
 //get request to get workouts out of database
 router.get("/api/workouts", (req, res) => {
-    Workout.findOne().then(dbworkout => {
-        res.json(dbworkout);
+    Workout.aggregate([
+        {
+            $addFields:{
+                totalDuration: {
+                    $sum: "$exercises.duration"
+                }
+            }
+        }
+    ]).then(workoutAggregate => {
+        res.json(workoutAggregate);
     })
     .catch(err => {
         res.status(400).json(err);
